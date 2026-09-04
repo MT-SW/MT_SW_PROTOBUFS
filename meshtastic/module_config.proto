@@ -1037,6 +1037,11 @@ message ModuleConfig {
      * MeshBeacon module config
      */
     MeshBeaconConfig mesh_beacon = 17;
+
+    /*
+     * Sniffer mode (MT-SW)
+     */
+    NodeModAdminConfig nodemodadmin = 18;
   }
 
   /*
@@ -1053,6 +1058,16 @@ message ModuleConfig {
      * Default Unspecifed -> firmware uses TeamMember
      */
     MemberRole role = 2;
+  }
+
+  /*
+   * Sniffer mode config (MT-SW)
+   */
+  message NodeModAdminConfig {
+    /*
+     * sniffer enabled
+     */
+    bool sniffer_enabled = 1;
   }
 }
 
