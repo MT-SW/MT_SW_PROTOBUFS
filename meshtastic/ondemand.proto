@@ -111,7 +111,7 @@ message NodesList {
 message Ping {
     optional int32 rx_rssi = 1;
     optional float snr = 2;
-    uint32 hops = 3;
+    optional uint32 hop_count = 3;
 }
 
 enum OnDemandType {
