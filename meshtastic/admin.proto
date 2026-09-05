@@ -172,6 +172,11 @@ message AdminMessage {
      * Mesh Beacon module config
      */
     MESHBEACON_CONFIG = 16;
+
+    /*
+     * Sniffer mode config (MT-SW)
+     */
+    NODEMODADMIN_CONFIG = 17;
   }
 
   enum BackupLocation {
