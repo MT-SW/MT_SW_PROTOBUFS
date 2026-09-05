@@ -152,6 +152,11 @@ message LocalModuleConfig {
   ModuleConfig.MeshBeaconConfig mesh_beacon = 18;
 
   /*
+   * Sniffer mode config (MT-SW)
+   */
+  ModuleConfig.NodeModAdminConfig nodemodadmin = 19;
+
+  /*
    * A version integer used to invalidate old save files when we make
    * incompatible changes This integer is set at build time and is private to
    * NodeDB.cpp in the device code.
