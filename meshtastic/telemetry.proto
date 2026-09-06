@@ -629,6 +629,19 @@ message LocalStats {
 }
 
 /*
+ * Extended local device statistics (custom firmware)
+ */
+message LocalStatsExtended {
+  uint32 memory_free_cheap = 1;
+  uint32 memory_total = 2;
+  uint32 cpu_usage_percent = 3;
+  uint32 flash_used_bytes = 4;
+  uint32 flash_total_bytes = 5;
+  uint32 memory_psram_free = 6;
+  uint32 memory_psram_total = 7;
+}
+
+/*
  * Traffic management statistics for mesh network optimization
  */
 message TrafficManagementStats {
@@ -788,6 +801,11 @@ message Telemetry {
      * Traffic management statistics
      */
     TrafficManagementStats traffic_management_stats = 9;
+
+    /*
+     * Extended local device statistics (custom firmware)
+     */
+    LocalStatsExtended local_stats_extended = 20;
   }
 }
 

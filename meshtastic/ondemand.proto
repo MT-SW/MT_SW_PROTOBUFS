@@ -9,7 +9,7 @@ option java_package = "org.meshtastic.proto";
 option swift_prefix = "";
 
 message FwPlusVersion {
-    uint32 version_number = 1;
+    uint32 version_number = 2;
 }
 
 message NodeStats {
