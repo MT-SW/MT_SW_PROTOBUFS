@@ -232,8 +232,23 @@ message ModuleConfig {
       CODEC2_1400 = 4;
       CODEC2_1300 = 5;
       CODEC2_1200 = 6;
-      CODEC2_700 = 7;
-      CODEC2_700B = 8;
+
+      /*
+       * Removed from libcodec2 upstream. A device configured to one of these
+       * falls back to CODEC2_700C.
+       */
+      CODEC2_700 = 7 [deprecated = true];
+      CODEC2_700B = 8 [deprecated = true];
+
+      /*
+       * Replaces CODEC2_700. Default for new configurations.
+       */
+      CODEC2_700C = 9;
+
+      /*
+       * Lowest rate, and the only one usable on slower modem presets.
+       */
+      CODEC2_450 = 10;
     }
 
     /*
@@ -247,7 +262,7 @@ message ModuleConfig {
     uint32 ptt_pin = 2;
 
     /*
-     * The audio sample rate to use for codec2
+     * The codec2 bitrate to encode at. Sample rate is always 8 kHz.
      */
     Audio_Baud bitrate = 3;
 
@@ -301,7 +316,10 @@ message ModuleConfig {
 
   /*
    * Config for the Traffic Management module.
-   * Provides packet inspection and traffic shaping to help reduce channel utilization
+   * Provides packet inspection and traffic shaping to help reduce channel utilization.
+   * Every field uses the proto3 zero value to mean "disabled"; there is no
+   * "use the firmware default" sentinel. Firmware installs its own defaults when it
+   * first creates this config, and a client that writes 0 turns that feature off.
    */
   message TrafficManagementConfig {
     // Tags 1, 2, 3, 5, 7, 10, 12, 13, 14 were bool toggle fields removed in favour
@@ -315,6 +333,7 @@ message ModuleConfig {
     /*
      * Minimum interval in seconds between position updates from the same node.
      * A non-zero value implicitly enables the suppression window; 0 disables it.
+     * Firmware default: 21600 (6 hours), installed when this config is first created.
      */
     uint32 position_min_interval_secs = 4;
 
