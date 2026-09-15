@@ -24,6 +24,10 @@ poza tym fork stara się być zsynchronizowany z upstreamowym `meshtastic/protob
   `packages/kmp/gradlew -p packages/kmp publishToMavenLocal -PVERSION_NAME=x.y.z` — i użyj
   go przez `mavenLocal()`.
 
+## Metadane pol
+
+Pola moga niesc metadane istotne dla aplikacji/UI (np. `diy_only`) przez opcje `meshtastic.field_metadata` - zobacz [`meshtastic/field_metadata.proto`](meshtastic/field_metadata.proto). Sa udostepniane jako generowane akcesory bez refleksji: pakiet KMP generuje je przez Wire `SchemaHandler` ([`packages/kmp`](packages/kmp/README.md)), a inne jezyki przez wtyczke [`tools/protoc-gen-fieldmeta`](tools/protoc-gen-fieldmeta/README.md) (ma gotowe przepisy integracji dla firmware/Apple/Python).
+
 ---
 
 ## 🇬🇧 English
@@ -45,3 +49,7 @@ kept in sync periodically.
 - **Android/Desktop app:** build the KMP package locally —
   `packages/kmp/gradlew -p packages/kmp publishToMavenLocal -PVERSION_NAME=x.y.z` — and
   consume it via `mavenLocal()`.
+
+## Field metadata
+
+Fields can carry app/UI-relevant metadata (e.g. `diy_only`) via the `meshtastic.field_metadata` option - see [`meshtastic/field_metadata.proto`](meshtastic/field_metadata.proto). It is exposed to consumers as reflection-free generated accessors: the KMP package generates them with a Wire `SchemaHandler` ([`packages/kmp`](packages/kmp/README.md)), and other languages via the [`tools/protoc-gen-fieldmeta`](tools/protoc-gen-fieldmeta/README.md) plugin (which has integration recipes for firmware/Apple/Python).
